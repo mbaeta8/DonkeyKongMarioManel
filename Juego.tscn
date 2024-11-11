@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://resources/graphics/backgrounds/level.png" type="Texture" id=1]
 [ext_resource path="res://resources/graphics/mario/mario_walk_1.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://resources/graphics/mario/mario_walk_2.png" type="Texture" id=5]
 [ext_resource path="res://resources/graphics/mario/mario_idle.png" type="Texture" id=6]
 [ext_resource path="res://mario.gd" type="Script" id=7]
+[ext_resource path="res://resources/graphics/peach/peach_2.png" type="Texture" id=8]
+[ext_resource path="res://resources/graphics/peach/peach_1.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 60, 4 )
@@ -37,6 +39,34 @@ extents = Vector2( 56, 4 )
 a = Vector2( -55, 7 )
 b = Vector2( 1, 10 )
 
+[sub_resource type="SegmentShape2D" id=21]
+a = Vector2( 39, 10 )
+b = Vector2( -1, 9 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 4, 5 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 4, 7 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 4, 4.5 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 4, 7.5 )
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 4, 6.5 )
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 4.5, 4.5 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 4, 5.5 )
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 4, 5 )
+
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 8.0
 height = 0.0
@@ -58,7 +88,7 @@ animations = [ {
 "name": "stairs",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
@@ -66,6 +96,14 @@ animations = [ {
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 4.5, 7 )
+
+[sub_resource type="SpriteFrames" id=20]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
 
 [node name="Juego" type="Node2D"]
 
@@ -111,8 +149,46 @@ shape = SubResource( 7 )
 position = Vector2( 191, 59 )
 shape = SubResource( 8 )
 
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Level/Suelo"]
+position = Vector2( 113, 32 )
+shape = SubResource( 21 )
+
+[node name="Escaleras" type="Area2D" parent="Level"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Escaleras"]
+position = Vector2( 212, 193 )
+shape = SubResource( 12 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/Escaleras"]
+position = Vector2( 124, 162 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Level/Escaleras"]
+position = Vector2( 60, 162.5 )
+shape = SubResource( 14 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Level/Escaleras"]
+position = Vector2( 140, 132.5 )
+shape = SubResource( 15 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Level/Escaleras"]
+position = Vector2( 100, 102.5 )
+shape = SubResource( 16 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Level/Escaleras"]
+position = Vector2( 51.5, 102.5 )
+shape = SubResource( 17 )
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Level/Escaleras"]
+position = Vector2( 180, 72.5 )
+shape = SubResource( 18 )
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Level/Escaleras"]
+position = Vector2( 148, 45 )
+shape = SubResource( 19 )
+
 [node name="Mario" type="RigidBody2D" parent="."]
-position = Vector2( 31, 207 )
+position = Vector2( 30, 207 )
 mode = 2
 script = ExtResource( 7 )
 __meta__ = {
@@ -135,6 +211,12 @@ cast_to = Vector2( 0, 15 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mario/Cuerpo"]
 position = Vector2( -0.5, 1 )
 shape = SubResource( 11 )
+
+[node name="Peach" type="AnimatedSprite" parent="."]
+position = Vector2( 120, 28.5 )
+scale = Vector2( 1, 0.954545 )
+frames = SubResource( 20 )
+playing = true
 
 [connection signal="area_entered" from="Mario/Cuerpo" to="Mario" method="_on_Cuerpo_area_entered"]
 [connection signal="area_exited" from="Mario/Cuerpo" to="Mario" method="_on_Cuerpo_area_exited"]
