@@ -76,22 +76,22 @@ animations = [ {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "idle",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "jump",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "stairs",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "walk",
-"speed": 5.0
+"speed": 2.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=11]
@@ -213,7 +213,7 @@ position = Vector2( -0.5, 1 )
 shape = SubResource( 11 )
 
 [node name="Peach" type="AnimatedSprite" parent="."]
-position = Vector2( 120, 28.5 )
+position = Vector2( 121, 29 )
 scale = Vector2( 1, 0.954545 )
 frames = SubResource( 20 )
 playing = true
