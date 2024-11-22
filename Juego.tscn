@@ -132,12 +132,9 @@ animations = [ {
 [node name="Juego" type="Node2D"]
 
 [node name="Level" type="Sprite" parent="."]
-position = Vector2( 0, -1 )
+position = Vector2( 0, 1 )
 texture = ExtResource( 1 )
 centered = false
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Suelo" type="StaticBody2D" parent="Level"]
 
@@ -212,7 +209,7 @@ position = Vector2( 148, 45 )
 shape = SubResource( 19 )
 
 [node name="Mario" type="RigidBody2D" parent="."]
-position = Vector2( 30, 207 )
+position = Vector2( 32, 209 )
 mode = 2
 script = ExtResource( 7 )
 __meta__ = {
@@ -222,7 +219,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mario"]
 shape = SubResource( 9 )
 
-[node name="Animaciones" type="AnimatedSprite" parent="Mario"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Mario"]
 frames = SubResource( 10 )
 animation = "idle"
 
@@ -237,13 +234,13 @@ position = Vector2( -0.5, 1 )
 shape = SubResource( 11 )
 
 [node name="Peach" type="AnimatedSprite" parent="."]
-position = Vector2( 121, 29 )
+position = Vector2( 121, 31 )
 scale = Vector2( 1, 0.954545 )
 frames = SubResource( 20 )
 playing = true
 
 [node name="Kong" type="AnimatedSprite" parent="."]
-position = Vector2( 63, 47 )
+position = Vector2( 46, 49 )
 frames = SubResource( 22 )
 animation = "idle"
 script = ExtResource( 15 )
